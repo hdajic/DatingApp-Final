@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
   }
 
   passwordRegexValidator(g: FormGroup) {
-    return /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?!.*[^a-zA-Z0-9!@#$%^&*(),.?":{}|<>])(.{8,30})$/.test(g.get('password').value) ? null : {'notvalid': true};
+    return /^(?=.*\d)(?=.*[A-Z])(?!.*[^a-zA-Z0-9!@#$%^&*(),.?":{}|<>])(.{8,30})$/.test(g.get('password').value) ? null : {'notvalid': true};
   }
 
   usernameValidator(g: FormGroup) {
