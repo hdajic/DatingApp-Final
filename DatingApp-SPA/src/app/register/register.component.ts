@@ -37,11 +37,19 @@ export class RegisterComponent implements OnInit {
       country: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
       confirmPassword: ['', Validators.required]
-    }, {validator: this.passwordMatchValidator});
+    }, {validator: [this.passwordMatchValidator, this.passwordRegexValidator, this.usernameValidator]});
   }
 
   passwordMatchValidator(g: FormGroup) {
     return g.get('password').value === g.get('confirmPassword').value ? null : {'mismatch': true};
+  }
+
+  passwordRegexValidator(g: FormGroup) {
+    return /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?!.*[^a-zA-Z0-9!@#$%^&*(),.?":{}|<>])(.{8,30})$/.test(g.get('password').value) ? null : {'notvalid': true};
+  }
+
+  usernameValidator(g: FormGroup) {
+    return /^[a-zA-Z0-9]{4,16}$/.test(g.get('username').value) ? null : {'usernamenotvalid': true};
   }
 
   register() {
