@@ -20,11 +20,6 @@
       formControlName="username" 
       placeholder="Username">
     <div class="invalid-feedback">Please choose a username</div>
-    <div class="invalid-feedback" 
-    *ngIf="registerForm.hasError('usernamenotvalid') 
-      && registerForm.get('username').touched">
-      Username can only have letters and numbers, without whitespaces 
-  </div>
   </div>
 
   <div class="form-group">
@@ -73,13 +68,6 @@
       && registerForm.get('password').touched">
       Password cannot exceed 30 characters
   </div>
-
-  <div class="invalid-feedback" 
-  *ngIf="registerForm.hasError('notvalid') 
-    && registerForm.get('password').touched">
-    Password must have at least 1 uppercase letter, 1 special character and 1 number 
-</div>
-
 
   </div>
 
